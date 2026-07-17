@@ -1,12 +1,5 @@
 # SolarYield — Soroban Yield Staking & Liquidity Vaults
 
-[![CI Pipeline](https://github.com/animeshsharma6565/stellar/actions/workflows/ci.yml/badge.svg)](https://github.com/animeshsharma6565/stellar/actions/workflows/ci.yml)
-![Stellar Testnet](https://img.shields.io/badge/Stellar-Testnet-blue?logo=stellar)
-![Cloudflare Connected](https://img.shields.io/badge/Cloudflare%20Pages-Connected-orange?logo=cloudflare)
-
-*   **Live Demo**: `PENDING — Cloudflare domain assignment awaiting DNS propagation`
-*   **Demo Video (1–2 min)**: `PENDING — Walkthrough recording session scheduled`
-
 ---
 
 ## Project Description
@@ -139,32 +132,6 @@ SolarYield handles three distinct user-facing fallback exceptions with custom me
 2.   **Signature Rejected**: Alert displayed when keysigner operations are declined.
 3.   **Maturity Lock / Insufficient Funds**: Dispatched when time-locked constraints remain active on-chain.
 
----
-
-## Screenshots
-
-### Wallet Connected & Core flow
-![Desktop Staking Overview](src/media/staking_portal_desktop.png)
-
-### Success State & Strategy Explorer
-![Desktop Strategy Explorer](src/media/strategy_explorer_desktop.png)
-
-### Operator Dashboard Metrics
-![Operator Vault Metrics](src/media/operator_vault_desktop.png)
-
-### Mobile UI
-![SolarYield Mobile Dashboard](src/media/staking_portal_mobile.png)
-
-### CI/CD run
-`PENDING — this audit's contract/frontend changes are not yet committed or pushed. A real passing-run screenshot for github.com/animeshsharma6565/stellar was visually verified during this audit (run #23 on commit 363aa3f, "Success", 54s) but reflects the pre-audit code; capture a fresh screenshot after pushing so it matches what's actually in this repo.`
-
-### Error State (Missing Wallet)
-![Error Modal Missing Wallet](src/media/error_modal_missing_wallet.png)
-
-Verbose test output (contract + frontend) is linked as text in the [Testing](#testing) section below rather than duplicated as a screenshot.
-
----
-
 ## Setup Instructions
 
 ### Pre-requisites
@@ -194,13 +161,11 @@ Verbose test output (contract + frontend) is linked as text in the [Testing](#te
 ```bash
 cargo test --all
 ```
-[Verbose Contract Test Outputs](src/media/cargo_test_output.txt)
 
 ### Run Frontend Mathematics Unit Tests
 ```bash
 npm run test
 ```
-[Verbose Frontend Test Outputs](src/media/frontend_test_output.txt)
 
 ---
 
