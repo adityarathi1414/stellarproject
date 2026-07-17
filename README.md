@@ -1,5 +1,9 @@
 # SolarYield — Soroban Yield Staking & Liquidity Vaults
 
+[![CI Pipeline](https://github.com/adityarathi1414/stellarproject/actions/workflows/ci.yml/badge.svg)](https://github.com/adityarathi1414/stellarproject/actions)
+![Stellar Testnet Connected](https://img.shields.io/badge/Stellar%20Testnet-Connected-blue?logo=stellar)
+![Cloudflare Connected](https://img.shields.io/badge/Cloudflare-Connected-orange?logo=cloudflare)
+
 ---
 
 ## Project Description
@@ -142,9 +146,6 @@ SolarYield handles three distinct user-facing fallback exceptions with custom me
 #### Staking Portal & Active Portfolio Overview
 ![Staking Portal Desktop](media/staking_portal_desktop.png)
 
-#### Strategy Explorer
-![Strategy Explorer Desktop](media/strategy_explorer_desktop.png)
-
 #### Operator Console
 ![Operator Console Desktop](media/operator_vault_desktop.png)
 
@@ -153,6 +154,14 @@ SolarYield handles three distinct user-facing fallback exceptions with custom me
   <img src="media/staking_portal_mobile_1.png" width="375" alt="Mobile View 1" />
   <img src="media/staking_portal_mobile_2.png" width="375" alt="Mobile View 2" />
 </div>
+
+---
+
+## Continuous Integration & Build Status
+
+Both the Rust smart contracts and Next.js frontend deployments are continuously validated and verified on every commit:
+
+![CI Checks Passed](media/ci_checks_passed.png)
 
 ---
 
