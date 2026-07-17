@@ -130,7 +130,31 @@ Both `yield_pool_manager` and `liquidity_vault` emit Soroban contract events (`e
 SolarYield handles three distinct user-facing fallback exceptions with custom messaging and visual boundaries:
 1.   **Freighter Wallet Not Found**: Shows when extension hooks are absent with install guides.
 2.   **Signature Rejected**: Alert displayed when keysigner operations are declined.
-3.   **Maturity Lock / Insufficient Funds**: Dispatched when time-locked constraints remain active on-chain.
+---
+
+## Product Walkthrough & Screenshots
+
+### Interactive Walkthrough Demo
+![SolarYield Interactive Walkthrough](media/ux_flow_walkthrough.gif)
+
+### Desktop Views
+
+#### Staking Portal & Active Portfolio Overview
+![Staking Portal Desktop](media/staking_portal_desktop.png)
+
+#### Strategy Explorer
+![Strategy Explorer Desktop](media/strategy_explorer_desktop.png)
+
+#### Operator Console
+![Operator Console Desktop](media/operator_vault_desktop.png)
+
+### Mobile Layout
+<div style="display: flex; gap: 10px; align-items: flex-start;">
+  <img src="media/staking_portal_mobile_1.png" width="375" alt="Mobile View 1" />
+  <img src="media/staking_portal_mobile_2.png" width="375" alt="Mobile View 2" />
+</div>
+
+---
 
 ## Setup Instructions
 
