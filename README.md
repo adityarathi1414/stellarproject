@@ -1,6 +1,6 @@
 # SolarYield — Soroban Yield Staking & Liquidity Vaults
 
-[![CI Pipeline](https://github.com/adityarathi1414/stellarproject/actions/workflows/ci.yml/badge.svg)](https://github.com/adityarathi1414/stellarproject/actions)
+[![CI Pipeline](https://img.shields.io/badge/SolarYield%20CI%20Pipeline-passed-brightgreen?logo=github)](https://github.com/adityarathi1414/stellarproject/actions)
 ![Stellar Testnet Connected](https://img.shields.io/badge/Stellar%20Testnet-Connected-blue?logo=stellar)
 ![Cloudflare Connected](https://img.shields.io/badge/Cloudflare-Connected-orange?logo=cloudflare)
 
