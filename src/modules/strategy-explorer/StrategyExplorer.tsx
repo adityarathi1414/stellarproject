@@ -6,12 +6,6 @@ import { getStrategies, registerStrategy, approveVaultAllowance, initiateStaking
 import { ErrorType } from '@/core/handlers/ErrorModal';
 import { StakingStrategy } from '@/types';
 
-interface StrategyExplorerProps {
-  currentAddress: string | null;
-  onError: (type: ErrorType, msg?: string) => void;
-  onSubscribed: () => void;
-}
-
 const STATIC_METADATA: Record<number, { description: string; features: string[] }> = {
   1: {
     description: 'Direct yield pools utilizing stable rate arbitrage protocols on Stellar Network.',
@@ -126,13 +120,13 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Banner */}
-      <div className="p-8 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] transition-all">
+      <div className="p-8 bg-white border border-slate-200/60 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-md transition-all duration-300">
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="p-2 bg-slate-100 border border-slate-900">
+          <div className="flex items-center gap-2.5">
+            <span className="p-2.5 bg-slate-50 text-slate-800 border border-slate-100 rounded-xl">
               <Layers className="w-5 h-5 text-slate-800" />
             </span>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-mono">STRATEGY EXPLORER</h2>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-sans">Strategy Explorer</h2>
           </div>
           <p className="text-xs text-slate-500 leading-relaxed max-w-xl font-sans">
             Discover on-chain staking strategies, subscribe to yield pools, or register custom strategy templates.
@@ -140,10 +134,10 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-mono font-medium text-white transition-colors rounded-none shrink-0 border border-slate-950"
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-sans font-semibold text-white transition-all rounded-xl hover:shadow-lg active:scale-95 shrink-0 border border-slate-950"
         >
           <Plus className="w-4 h-4" />
-          <span>REGISTER STRATEGY</span>
+          <span>Register Strategy</span>
         </button>
       </div>
 
@@ -163,7 +157,7 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
                 <p className="text-xs text-slate-500 mt-1 leading-relaxed">{strat.description}</p>
               </div>
 
-              <div className="p-4 bg-slate-50 border border-slate-100 space-y-2">
+              <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl space-y-2">
                 <div className="text-2xl font-bold font-mono text-slate-950">
                   {(strat.apyBps / 100).toFixed(2)}% <span className="text-xs font-mono text-slate-400">APY</span>
                 </div>
@@ -178,7 +172,7 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
                 <ul className="space-y-2">
                   {strat.features.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-slate-900 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-slate-800 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -186,20 +180,20 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <input
                 type="number"
                 value={stakeAmount}
                 onChange={(e) => setStakeAmount(e.target.value)}
                 placeholder="Amount syUSD"
-                className="w-full px-3 py-2 border border-slate-900 focus:outline-none focus:bg-slate-50 text-xs font-mono text-slate-800 bg-white"
+                className="w-full px-3.5 py-2 border border-slate-200 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-900/5 text-xs font-mono text-slate-800 bg-white rounded-xl"
               />
               <button
                 onClick={() => handleSubscribe(strat)}
                 disabled={subscribingId === strat.id}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-slate-950 hover:bg-slate-800 text-white font-sans font-semibold text-xs transition-all rounded-xl shadow-xs hover:shadow-md active:scale-98"
               >
-                <span>{subscribingId === strat.id ? 'AUTHORIZING...' : 'STAKE INTO POOL'}</span>
+                <span>{subscribingId === strat.id ? 'Authorizing...' : 'Stake Into Pool'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -208,17 +202,17 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
       </div>
 
       {strategies.length === 0 && (
-        <div className="p-8 bg-white border border-slate-200 text-center text-xs font-mono text-slate-400">
+        <div className="p-8 bg-white border border-slate-200 rounded-2xl text-center text-xs font-mono text-slate-400">
           Loading strategies from YieldPoolManager on Stellar Testnet…
         </div>
       )}
 
       {/* Register Strategy Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
-          <div className="w-full max-w-md p-8 bg-white border border-slate-900 shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/30 backdrop-blur-xs">
+          <div className="w-full max-w-md p-8 bg-white border border-slate-200/60 rounded-2xl shadow-xl space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900 font-mono">REGISTER YIELD STRATEGY</h3>
+              <h3 className="text-base font-bold text-slate-900 font-sans">Register Yield Strategy</h3>
               <button
                 type="button"
                 onClick={() => setShowCreateModal(false)}
@@ -237,7 +231,7 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                   placeholder="e.g. DeFi Vault Alpha"
-                  className="w-full px-3 py-2 border border-slate-900 focus:outline-none focus:bg-slate-50 text-slate-800 bg-white"
+                  className="w-full px-3.5 py-2 border border-slate-200 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-900/5 text-slate-800 bg-white rounded-xl"
                 />
               </div>
 
@@ -249,7 +243,7 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
                     required
                     value={newApy}
                     onChange={(e) => setNewApy(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-900 focus:outline-none focus:bg-slate-50 text-slate-800 bg-white"
+                    className="w-full px-3.5 py-2 border border-slate-200 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-900/5 text-slate-800 bg-white rounded-xl"
                   />
                 </div>
 
@@ -260,23 +254,23 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
                     required
                     value={newLockup}
                     onChange={(e) => setNewLockup(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-900 focus:outline-none focus:bg-slate-50 text-slate-800 bg-white"
+                    className="w-full px-3.5 py-2 border border-slate-200 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-900/5 text-slate-800 bg-white rounded-xl"
                   />
                 </div>
               </div>
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-3 pt-4 font-sans font-semibold">
                 <button
                   type="submit"
                   disabled={registering}
-                  className="flex-1 py-2.5 px-4 bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs transition-colors disabled:opacity-50"
+                  className="flex-1 py-2.5 px-4 bg-slate-950 hover:bg-slate-800 text-white text-xs transition-all rounded-xl"
                 >
                   {registering ? 'Publishing...' : 'Publish Strategy'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="py-2.5 px-4 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors"
+                  className="py-2.5 px-4 bg-white border border-slate-200 text-slate-600 text-xs hover:bg-slate-50 transition-all rounded-xl"
                 >
                   Cancel
                 </button>
@@ -288,3 +282,9 @@ export const StrategyExplorer: React.FC<StrategyExplorerProps> = ({
     </div>
   );
 };
+
+interface StrategyExplorerProps {
+  currentAddress: string | null;
+  onError: (type: ErrorType, msg?: string) => void;
+  onSubscribed: () => void;
+}

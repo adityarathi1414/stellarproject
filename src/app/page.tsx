@@ -37,17 +37,17 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#fafafa] text-slate-800 flex flex-col justify-between selection:bg-slate-950 selection:text-white font-sans antialiased">
       {/* Navbar */}
-      <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo / Branding */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-slate-950 flex items-center justify-center">
+            <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center shadow-sm">
               <Zap className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-lg font-bold tracking-tight text-slate-950 font-mono">SolarYield</span>
-                <span className="px-2 py-0.5 rounded-none bg-slate-100 text-slate-700 border border-slate-200 text-[9px] font-mono font-bold uppercase tracking-wider">
+                <span className="text-lg font-bold tracking-tight text-slate-950 font-sans">SolarYield</span>
+                <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200 text-[9px] font-mono font-bold uppercase tracking-wider">
                   Level 3
                 </span>
               </div>
@@ -70,9 +70,9 @@ export default function Home() {
       {/* Main Content Body */}
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
         {/* Error Simulation Helper Ribbon */}
-        <div className="mb-8 p-5 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+        <div className="mb-8 p-5 bg-white border border-slate-200/60 rounded-2xl shadow-sm flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-2 text-slate-500">
-            <Sparkles className="w-4 h-4 text-slate-900 animate-pulse" />
+            <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
             <span className="font-bold text-slate-800">SIMULATOR CONTROLS:</span>
             <span className="hidden lg:inline text-slate-400">Test required Level 3 client-side exception states</span>
           </div>
@@ -80,7 +80,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => triggerError('NO_WALLET')}
-              className="px-3 py-1.5 border border-slate-900 bg-white hover:bg-slate-50 text-slate-900 font-bold transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] text-[10px]"
+              className="px-3.5 py-1.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-lg transition-all shadow-xs hover:border-slate-300 text-[10px]"
             >
               Missing Wallet
             </button>
@@ -88,7 +88,7 @@ export default function Home() {
               onClick={() =>
                 triggerError('SIGNATURE_REJECTED', 'Freighter Wallet transaction signing rejected by keysigner.')
               }
-              className="px-3 py-1.5 border border-slate-900 bg-white hover:bg-slate-50 text-slate-900 font-bold transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] text-[10px]"
+              className="px-3.5 py-1.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-lg transition-all shadow-xs hover:border-slate-300 text-[10px]"
             >
               Rejected Signature
             </button>
@@ -99,7 +99,7 @@ export default function Home() {
                   'Vesting checkpoint timestamp criteria not met: Maturity expected in 14m 20s.'
                 )
               }
-              className="px-3 py-1.5 border border-slate-900 bg-white hover:bg-slate-50 text-slate-900 font-bold transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] text-[10px]"
+              className="px-3.5 py-1.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-lg transition-all shadow-xs hover:border-slate-300 text-[10px]"
             >
               Unexpired Lockup
             </button>

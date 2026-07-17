@@ -99,13 +99,13 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
   return (
     <div className="flex flex-wrap items-center gap-4">
       {/* Role Tabs */}
-      <div className="flex bg-[#f3f4f6] p-1 border border-slate-200 rounded-none">
+      <div className="flex bg-[#f1f5f9] p-1 border border-slate-200/40 rounded-xl">
         <button
           onClick={() => {
             setActiveRole('staker');
             if (!currentAddress) setCurrentAddress(STELLAR_CONFIG.demoAccounts.staker);
           }}
-          className={`px-4 py-2 text-xs font-mono font-medium transition-all rounded-none ${
+          className={`px-4 py-2 text-xs font-sans font-semibold transition-all rounded-lg ${
             activeRole === 'staker'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-500 hover:text-slate-900'
@@ -118,7 +118,7 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
             setActiveRole('operator');
             if (!currentAddress) setCurrentAddress(STELLAR_CONFIG.demoAccounts.operator);
           }}
-          className={`px-4 py-2 text-xs font-mono font-medium transition-all rounded-none ${
+          className={`px-4 py-2 text-xs font-sans font-semibold transition-all rounded-lg ${
             activeRole === 'operator'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-500 hover:text-slate-900'
@@ -128,7 +128,7 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
         </button>
         <button
           onClick={() => setActiveRole('explorer')}
-          className={`px-4 py-2 text-xs font-mono font-medium transition-all rounded-none ${
+          className={`px-4 py-2 text-xs font-sans font-semibold transition-all rounded-lg ${
             activeRole === 'explorer'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-500 hover:text-slate-900'
@@ -139,14 +139,14 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
       </div>
 
       {/* Connection Indicator */}
-      <div className="hidden md:flex items-center gap-1.5 px-3 py-2 border border-slate-200 bg-slate-50 text-slate-700 text-xs font-mono">
+      <div className="hidden md:flex items-center gap-1.5 px-3 py-2 border border-slate-200/60 bg-slate-50 text-slate-700 text-xs font-mono rounded-xl">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
         <span>Stellar Testnet</span>
       </div>
 
       {/* Connect Status */}
       {currentAddress ? (
-        <div className="flex items-center gap-2 border border-slate-200 bg-white p-1.5 pl-4 text-xs rounded-none">
+        <div className="flex items-center gap-2 border border-slate-200/60 bg-white p-1.5 pl-4 text-xs rounded-xl shadow-xs">
           <div className="flex items-center gap-2 font-mono">
             <Shield className="w-4 h-4 text-slate-400" />
             <span className="text-slate-800">{truncateAddress(currentAddress)}</span>
@@ -165,7 +165,7 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
 
           <div className="h-4 w-[1px] bg-slate-200 mx-1"></div>
 
-          <div className="px-2 py-1 bg-slate-50 border border-slate-100 text-slate-800 font-mono text-[11px]">
+          <div className="px-2.5 py-1 bg-slate-50 border border-slate-200/60 text-slate-800 font-mono text-[11px] rounded-lg font-bold">
             {tokenBalance} syUSD
           </div>
 
@@ -181,10 +181,10 @@ export const WalletConnect: React.FC<WalletConnectProps> = ({
         <button
           onClick={handleConnectWallet}
           disabled={loading}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 font-mono font-medium text-xs text-white transition-colors rounded-none disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 font-sans font-semibold text-xs text-white transition-all rounded-xl hover:shadow-md active:scale-95 disabled:opacity-50"
         >
           <Wallet className="w-4 h-4" />
-          <span>{loading ? 'CONNECTING...' : 'CONNECT WALLET'}</span>
+          <span>{loading ? 'Connecting...' : 'Connect Wallet'}</span>
         </button>
       )}
     </div>

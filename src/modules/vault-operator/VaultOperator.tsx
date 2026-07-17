@@ -120,19 +120,19 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header Banner */}
-      <div className="p-8 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] transition-all">
+      <div className="p-8 bg-white border border-slate-200/60 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-md transition-all duration-300">
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="p-2 bg-slate-100 border border-slate-900">
+          <div className="flex items-center gap-2.5">
+            <span className="p-2.5 bg-slate-50 text-slate-800 border border-slate-100 rounded-xl">
               <Vault className="w-5 h-5 text-slate-900" />
             </span>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-mono">OPERATOR CONSOLE</h2>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-sans">Operator Console</h2>
           </div>
           <p className="text-xs text-slate-500 leading-relaxed max-w-xl font-sans">
             Oversee accumulated pool yields, invoke linear reward checkpoints, and execute contract asset withdrawals.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-slate-50 p-3 border border-slate-200">
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-slate-50 p-3 border border-slate-200/60 rounded-xl">
           <ShieldCheck className="w-4 h-4 text-emerald-600 animate-pulse" />
           <span>Vault Contract: {truncate(STELLAR_CONFIG.contracts.liquidityVault)}</span>
         </div>
@@ -146,7 +146,7 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
             <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
               Total Yield Aggregated
             </span>
-            <span className="p-2 bg-emerald-50 text-emerald-700 border border-emerald-100">
+            <span className="p-2 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-lg">
               <TrendingUp className="w-4 h-4" />
             </span>
           </div>
@@ -164,7 +164,7 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
             <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
               Active Vault Balance
             </span>
-            <span className="p-2 bg-slate-100 text-slate-800 border border-slate-200">
+            <span className="p-2 bg-slate-50 text-slate-800 border border-slate-100 rounded-lg">
               <Vault className="w-4 h-4" />
             </span>
           </div>
@@ -182,7 +182,7 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
             <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
               Withdraw Liquid Assets
             </span>
-            <span className="p-2 bg-slate-100 text-slate-800 border border-slate-200">
+            <span className="p-2 bg-slate-50 text-slate-800 border border-slate-100 rounded-lg">
               <Download className="w-4 h-4" />
             </span>
           </div>
@@ -192,25 +192,25 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
               value={withdrawAmount}
               onChange={(e) => setWithdrawAmount(e.target.value)}
               placeholder="Amount syUSD"
-              className="w-full px-3 py-2 border border-slate-900 focus:outline-none focus:bg-slate-50 text-sm font-mono text-slate-800 bg-white"
+              className="w-full px-3.5 py-2 border border-slate-200 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-900/5 text-sm font-mono text-slate-800 bg-white rounded-xl"
             />
             <button
               onClick={handleWithdraw}
               disabled={loadingAction === 'withdraw'}
-              className="px-4 py-2 bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] shrink-0"
+              className="px-4 py-2 bg-slate-950 hover:bg-slate-800 text-white font-sans font-semibold text-xs transition-all rounded-xl shadow-xs hover:shadow-md active:scale-95 shrink-0"
             >
-              {loadingAction === 'withdraw' ? 'WAITING...' : 'WITHDRAW'}
+              {loadingAction === 'withdraw' ? 'Waiting...' : 'Withdraw'}
             </button>
           </div>
         </div>
       </div>
 
       {/* Depositors Table */}
-      <div className="p-8 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] space-y-6">
+      <div className="p-8 bg-white border border-slate-200/60 rounded-2xl shadow-sm space-y-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5 text-slate-900" />
-            <h3 className="text-base font-bold text-slate-900 font-mono">ACTIVE DEPOSITOR STREAMS</h3>
+            <h3 className="text-base font-bold text-slate-900 font-sans">Active Depositor Streams</h3>
           </div>
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-bold">
             {depositors.length} POSITIONS INDEXED
@@ -250,12 +250,12 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
                     <td className="py-4 text-slate-900 font-bold">{dep.amount} syUSD</td>
                     <td className="py-4">
                       {isDue ? (
-                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 inline-flex items-center gap-1">
+                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md inline-flex items-center gap-1">
                           <CheckCircle className="w-3 h-3" />
                           <span>Matured</span>
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-50 text-slate-400 border border-slate-200 inline-flex items-center gap-1">
+                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-50 text-slate-400 border border-slate-200/60 rounded-md inline-flex items-center gap-1">
                           <Clock className="w-3 h-3 text-slate-400" />
                           <span>Locked ({nextCheckpointSecs}s)</span>
                         </span>
@@ -272,16 +272,16 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
                           )
                         }
                         disabled={loadingAction === `collect-${dep.stakerAddress}`}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-[10px] font-bold uppercase transition-all ${
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-sans text-xs font-semibold uppercase transition-all rounded-xl ${
                           isDue
-                            ? 'bg-slate-950 text-white hover:bg-slate-800 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]'
-                            : 'bg-slate-100 text-slate-400 border border-slate-200'
+                            ? 'bg-slate-950 text-white hover:bg-slate-800 active:scale-95 shadow-xs'
+                            : 'bg-slate-50 text-slate-400 border border-slate-200/60'
                         }`}
                       >
                         <Zap className="w-3 h-3" />
                         <span>
                           {loadingAction === `collect-${dep.stakerAddress}`
-                            ? 'CHECKPOINTING...'
+                            ? 'Checkpointing...'
                             : isDue
                             ? 'Run Checkpoint'
                             : 'Maturity Lock'}
@@ -297,7 +297,7 @@ export const VaultOperator: React.FC<VaultOperatorProps> = ({
 
         {/* Real Testnet Proof Box */}
         {lastTxHash && (
-          <div className="p-4 bg-slate-50 border border-slate-200 text-xs font-mono flex items-center justify-between text-slate-500">
+          <div className="p-4 bg-slate-50/50 border border-slate-200/60 text-xs font-mono flex items-center justify-between text-slate-500 rounded-xl">
             <span className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600 animate-pulse" />
               <span>Verified Ledger Tx:</span>

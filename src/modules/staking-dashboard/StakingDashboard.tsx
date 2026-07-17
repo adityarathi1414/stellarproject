@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Clock, Pause, Play, Trash2, Plus, ExternalLink, Zap, Shield, HelpCircle } from 'lucide-react';
+import { Clock, Pause, Play, Trash2, Plus, ExternalLink, Zap, HelpCircle } from 'lucide-react';
 import { STELLAR_CONFIG } from '@/config/contracts';
 import { getPosition, pausePosition, resumePosition, terminatePosition, ContractCallError } from '@/utils/sorobanClient';
 import { ErrorType } from '@/core/handlers/ErrorModal';
@@ -165,13 +165,13 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Overview Banner */}
-      <div className="p-8 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] transition-all">
+      <div className="p-8 bg-white border border-slate-200/60 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-md transition-all duration-300">
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="p-2 bg-slate-100 text-slate-800 border border-slate-900">
-              <Zap className="w-5 h-5 text-slate-900" />
+          <div className="flex items-center gap-2.5">
+            <span className="p-2.5 bg-slate-50 text-slate-800 border border-slate-100 rounded-xl">
+              <Zap className="w-5 h-5 text-slate-800" />
             </span>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-mono">STAKING PORTAL</h2>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 font-sans">Staking Portal</h2>
           </div>
           <p className="text-xs text-slate-500 leading-relaxed max-w-xl font-sans">
             Monitor decentralized liquidity allocations, trigger yield aggregation events on-chain, or terminate locked portfolios.
@@ -179,10 +179,10 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
         </div>
         <button
           onClick={onExploreStrategies}
-          className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-mono font-medium text-white transition-colors rounded-none shrink-0 border border-slate-950"
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-sans font-semibold text-white transition-all rounded-xl hover:shadow-lg active:scale-95 shrink-0"
         >
           <Plus className="w-4 h-4" />
-          <span>STAKE NEW CAPITAL</span>
+          <span>Stake New Capital</span>
         </button>
       </div>
 
@@ -211,7 +211,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                     <h3 className="text-base font-bold text-slate-900 mt-1 font-sans">{pos.strategyName}</h3>
                   </div>
                   <span
-                    className={`px-3 py-1 text-[10px] font-mono font-bold uppercase border ${
+                    className={`px-3 py-1 text-[10px] font-mono font-bold uppercase border rounded-md ${
                       pos.status === 'Active'
                         ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                         : pos.status === 'Paused'
@@ -233,7 +233,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                   />
                 )}
 
-                <div className="p-4 bg-slate-50 border border-slate-100 space-y-2.5 font-mono text-xs">
+                <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl space-y-2.5 font-mono text-xs">
                   <div className="flex justify-between items-center">
                     <span className="text-slate-400">Vault Operator</span>
                     <a
@@ -262,13 +262,13 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
 
                 {/* Countdown Progress */}
                 {!isTerminated && (
-                  <div className="p-3 bg-slate-50 border border-slate-200 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-slate-500 font-mono text-[11px]">
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-slate-500 font-sans text-xs">
                       <Clock className="w-3.5 h-3.5 text-slate-400" />
                       <span>Lockup Maturity:</span>
                     </div>
                     <span
-                      className={`font-mono text-[11px] font-bold px-2 py-0.5 border ${
+                      className={`font-mono text-[11px] font-bold px-2.5 py-0.5 border rounded-lg ${
                         progress.unlocked
                           ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                           : 'bg-amber-50 text-amber-700 border-amber-200'
@@ -288,7 +288,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                       <button
                         onClick={() => handlePause(pos.id)}
                         disabled={actionLoading === pos.id}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-mono text-[11px] font-bold transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 border border-slate-250 bg-white hover:bg-slate-50 text-slate-700 font-sans text-xs font-semibold rounded-xl transition-all shadow-xs hover:border-slate-350 active:scale-98"
                       >
                         <Pause className="w-3.5 h-3.5" />
                         <span>PAUSE</span>
@@ -297,7 +297,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                       <button
                         onClick={() => handleResume(pos.id)}
                         disabled={actionLoading === pos.id}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-mono text-[11px] font-bold transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] hover:shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 border border-slate-250 bg-white hover:bg-slate-50 text-slate-700 font-sans text-xs font-semibold rounded-xl transition-all shadow-xs hover:border-slate-350 active:scale-98"
                       >
                         <Play className="w-3.5 h-3.5" />
                         <span>RESUME</span>
@@ -307,7 +307,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                     <button
                       onClick={() => handleTerminate(pos.id)}
                       disabled={actionLoading === pos.id}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 border border-slate-200 bg-white hover:bg-slate-50 text-rose-700 font-mono text-[11px] font-bold transition-all shadow-[2px_2px_0px_0px_rgba(225,29,72,1)] hover:shadow-[3px_3px_0px_0px_rgba(225,29,72,1)]"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 border border-rose-100 bg-rose-50/30 hover:bg-rose-50/50 text-rose-600 font-sans text-xs font-semibold rounded-xl transition-all shadow-xs hover:border-rose-200 active:scale-98"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>UNSTAKE</span>
@@ -315,7 +315,7 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
                   </>
                 )}
                 {isTerminated && (
-                  <div className="w-full py-2 text-center font-mono text-xs text-rose-700 bg-rose-50/20 border border-rose-100">
+                  <div className="w-full py-2.5 text-center font-sans text-xs font-semibold text-rose-700 bg-rose-50/20 border border-rose-100 rounded-xl">
                     Liquidity terminated & principal returned
                   </div>
                 )}
@@ -324,9 +324,9 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
           );
         })}
         {positions.length === 0 && (
-          <div className="col-span-2 p-12 text-center border border-dashed border-slate-300 bg-white space-y-4">
+          <div className="col-span-2 p-12 text-center border border-dashed border-slate-250 rounded-2xl bg-white space-y-4">
             <HelpCircle className="w-8 h-8 mx-auto text-slate-400" />
-            <h3 className="font-mono text-sm font-bold text-slate-900">NO ACTIVE STAKING POSITIONS FOUND</h3>
+            <h3 className="font-sans text-sm font-bold text-slate-900">NO ACTIVE STAKING POSITIONS FOUND</h3>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
               You do not have any active allocations. Go to the Strategy Explorer to allocate liquidity into locked APY strategies.
             </p>
@@ -335,23 +335,23 @@ export const StakingDashboard: React.FC<StakingDashboardProps> = ({
       </div>
 
       {/* On-Chain Events Ledger Section */}
-      <div className="p-8 bg-white border border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] space-y-4">
+      <div className="p-8 bg-white border border-slate-200/60 rounded-2xl shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <h3 className="text-sm font-bold tracking-tight text-slate-900 font-mono">ON-CHAIN EVENT LEDGER (SOROBAN POLLING)</h3>
+            <h3 className="text-sm font-bold tracking-tight text-slate-900 font-sans">On-Chain Event Ledger (Soroban Polling)</h3>
           </div>
           <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
             Listening to Stellar Testnet RPC...
           </span>
         </div>
 
-        <div className="p-4 bg-slate-50 border border-slate-200 font-mono text-xs divide-y divide-slate-200/60 max-h-48 overflow-y-auto space-y-2 custom-scrollbar">
+        <div className="p-4 bg-slate-50/50 border border-slate-100 rounded-xl font-mono text-xs divide-y divide-slate-200/40 max-h-48 overflow-y-auto space-y-2 custom-scrollbar">
           {eventLogs.map((log) => (
             <div key={log.id} className="pt-2 flex items-start gap-4">
               <span className="text-slate-400 shrink-0">{log.time}</span>
               <span className="text-slate-800 font-bold shrink-0">{log.contract}</span>
-              <span className="px-1.5 py-0.2 bg-slate-200 text-slate-700 font-bold uppercase text-[9px] border border-slate-300 shrink-0">
+              <span className="px-1.5 py-0.2 bg-slate-200/60 text-slate-600 font-bold uppercase text-[9px] border border-slate-300/40 rounded-md shrink-0">
                 {log.topic}
               </span>
               <span className="text-slate-600 break-all">{log.data}</span>
@@ -409,7 +409,7 @@ export const LiveYieldTicker: React.FC<TickerProps> = ({
   }, [principal, apyBps, lastCheckpoint, isPaused]);
 
   return (
-    <div className="p-5 border border-emerald-950/20 bg-emerald-50/10 flex flex-col items-start gap-1">
+    <div className="p-5 border border-emerald-950/10 bg-emerald-50/10 rounded-xl flex flex-col items-start gap-1">
       <span className="text-[9px] font-mono text-emerald-800 font-bold uppercase tracking-widest flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
         Accruing Yield (syUSD)
